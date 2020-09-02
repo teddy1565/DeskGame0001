@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>遊戲選單</title>
+        <%- formStyle %>
+    </head>
+    <body>
+        <%- queryTarget %>
+        <%- procced %>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        function matchBattle(){
+            let matchTarget = document.getElementById("match").value;
+            socket.emit('matchBattle',matchTarget);
+            let a = document.getElementById("query");
+        }
+        socket.on("")
+    </script>
+</html>

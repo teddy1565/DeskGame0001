@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--enemyState,selfstate,scoreState,title,errMessage,BGI-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= title %></title>
+        <%- errMessage %>
+        <%- BGI %>
+    </head>
+    <body>
+        <div id="enemy">
+            <%- enemyState %>
+        </div>
+        <div id="myself">
+            <%- selfState %>
+        </div>
+        <div id="score"><%- scoreState %></div>
+    </body>
+</html>
+<script>
+    function displayScore(){
+        let xhttpRequest = new XMLHttpRequest();
+        xhttpRequest.onreadystatechange = ()=>{
+            if(xhttpRequest.status===200&&XMLHttpRequest.DONE===xhttpRequest.readyState){
+                document.getElementById("score").innerText=xhttpRequest.responseText;
+            }
+        };
+        xhttpRequest.open('GET','/game/score',true);
+        xhttpRequest.send();
+    }
+</script>
